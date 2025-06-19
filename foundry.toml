@@ -4,6 +4,7 @@ solc = "0.8.25"
 
 remappings = [
     "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+    "rain.sol.codegen/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.sol.codegen/src/"
 ]
 
 fs_permissions = [
