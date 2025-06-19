@@ -27,7 +27,7 @@ jobs:
           # 1G = 1073741824
           gc-max-store-size-linux: 1G
 
-      - run: nix develop -c rain-pyth-prelude
+      - run: nix develop -c rain-merkle-prelude
 
       - run: nix develop -c forge script ./script/BuildPointers.sol
 
