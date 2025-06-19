@@ -1,0 +1,20 @@
+[profile.default]
+
+solc = "0.8.25"
+
+remappings = [
+    "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+]
+
+fs_permissions = [
+    { access = "read-write", path = "src/generated" },
+    { access = "read-write", path = "meta" },
+]
+
+evm_version = "paris"
+
+optimizer = true
+optimizer_runs = 1000000
+
+bytecode_hash = "none"
+cbor_metadata = false
