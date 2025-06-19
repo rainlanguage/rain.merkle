@@ -11,6 +11,11 @@ import {
 } from "../lib/parse/LibMerkleSubParser.sol";
 import {IInterpreterExternV3} from "rain.interpreter.interface/interface/IInterpreterExternV3.sol";
 import {LibParseOperand} from "rain.interpreter/lib/parse/LibParseOperand.sol";
+import {
+    OPERAND_HANDLER_FUNCTION_POINTERS as SUB_PARSER_OPERAND_HANDLERS,
+    PARSE_META as SUB_PARSER_PARSE_META,
+    SUB_PARSER_WORD_PARSERS
+} from "../generated/MerkleWords.pointers.sol";
 
 uint8 constant PARSE_META_BUILD_DEPTH = 1;
 
@@ -22,20 +27,17 @@ abstract contract MerkleSubParser is BaseRainterpreterSubParserNPE2 {
 
     /// @inheritdoc BaseRainterpreterSubParserNPE2
     function subParserParseMeta() internal pure override returns (bytes memory) {
-        // return SUB_PARSER_PARSE_META;
-        return "";
+        return SUB_PARSER_PARSE_META;
     }
 
     /// @inheritdoc BaseRainterpreterSubParserNPE2
     function subParserWordParsers() internal pure override returns (bytes memory) {
-        // return SUB_PARSER_WORD_PARSERS;
-        return "";
+        return SUB_PARSER_WORD_PARSERS;
     }
 
     /// @inheritdoc BaseRainterpreterSubParserNPE2
     function subParserOperandHandlers() internal pure override returns (bytes memory) {
-        // return SUB_PARSER_OPERAND_HANDLERS;
-        return "";
+        return SUB_PARSER_OPERAND_HANDLERS;
     }
 
     function buildOperandHandlerFunctionPointers() external pure returns (bytes memory) {

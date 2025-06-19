@@ -6,7 +6,7 @@ import {BaseRainterpreterExternNPE2, Operand} from "rain.interpreter/abstract/Ba
 import {LibOpMerkleProofVerify} from "../lib/op/LibOpMerkleProofVerify.sol";
 import {LibConvert} from "rain.lib.typecast/LibConvert.sol";
 
-// import {OPCODE_FUNCTION_POINTERS, INTEGRITY_FUNCTION_POINTERS} from "../generated/MerkleWords.pointers.sol";
+import {OPCODE_FUNCTION_POINTERS, INTEGRITY_FUNCTION_POINTERS} from "../generated/MerkleWords.pointers.sol";
 
 uint256 constant OPCODE_MERKLE_PROOF_VERIFY = 0;
 
@@ -14,13 +14,11 @@ uint256 constant OPCODE_FUNCTION_POINTERS_LENGTH = 1;
 
 abstract contract MerkleExtern is BaseRainterpreterExternNPE2 {
     function opcodeFunctionPointers() internal pure override returns (bytes memory) {
-        // return OPCODE_FUNCTION_POINTERS;
-        return "";
+        return OPCODE_FUNCTION_POINTERS;
     }
 
     function integrityFunctionPointers() internal pure override returns (bytes memory) {
-        // return INTEGRITY_FUNCTION_POINTERS;
-        return "";
+        return INTEGRITY_FUNCTION_POINTERS;
     }
 
     function buildOpcodeFunctionPointers() external pure returns (bytes memory) {
