@@ -3,9 +3,9 @@
 pragma solidity ^0.8.25;
 
 import {Operand} from "rain.interpreter.interface/interface/deprecated/IInterpreterV2.sol";
-import {MerkleProof} from "openzeppelin-contracts/utils/cryptography/MerkleProof.sol";
+import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
 
-library LibOpMerkle {
+library LibOpMerkleProofVerify {
     function integrity(Operand, uint256 inputs, uint256) internal pure returns (uint256, uint256) {
         // Merkle proof requires dynamic proof inputs and produces 1 output.
         return (inputs, 1);

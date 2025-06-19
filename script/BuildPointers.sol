@@ -7,8 +7,8 @@ import {MerkleWords} from "src/concrete/MerkleWords.sol";
 import {LibFs} from "rain.sol.codegen/lib/LibFs.sol";
 import {LibCodeGen} from "rain.sol.codegen/lib/LibCodeGen.sol";
 import {LibGenParseMeta} from "rain.interpreter.interface/lib/codegen/LibGenParseMeta.sol";
-// import {LibPythSubParser} from "src/lib/parse/LibPythSubParser.sol";
-// import {PARSE_META_BUILD_DEPTH} from "src/abstract/PythSubParser.sol";
+import {LibMerkleSubParser} from "src/lib/parse/LibMerkleSubParser.sol";
+import {PARSE_META_BUILD_DEPTH} from "src/abstract/MerkleSubParser.sol";
 
 contract BuildPointers is Script {
     function buildMerkleWordsPointers() internal {
@@ -17,13 +17,20 @@ contract BuildPointers is Script {
         string memory name = "MerkleWords";
 
         LibFs.buildFileForContract(
-            vm, address(merkleWords), name, string.concat(LibCodeGen.describedByMetaHashConstantString(vm, name))
+            vm,
+            address(merkleWords),
+            name,
+            string.concat(
+                LibCodeGen.describedByMetaHashConstantString(vm, name),
+                LibGenParseMeta.parseMetaConstantString(
+                    vm, LibMerkleSubParser.authoringMetaV2(), PARSE_META_BUILD_DEPTH
+                ),
+                LibCodeGen.subParserWordParsersConstantString(vm, merkleWords),
+                LibCodeGen.operandHandlerFunctionPointersConstantString(vm, merkleWords),
+                LibCodeGen.integrityFunctionPointersConstantString(vm, merkleWords),
+                LibCodeGen.opcodeFunctionPointersConstantString(vm, merkleWords)
+            )
         );
-        // LibGenParseMeta.parseMetaConstantString(vm, LibPythSubParser.authoringMetaV2(), PARSE_META_BUILD_DEPTH),
-        // LibCodeGen.subParserWordParsersConstantString(vm, pythWords),
-        // LibCodeGen.operandHandlerFunctionPointersConstantString(vm, pythWords),
-        // LibCodeGen.integrityFunctionPointersConstantString(vm, pythWords),
-        // LibCodeGen.opcodeFunctionPointersConstantString(vm, pythWords)
     }
 
     function run() external {
