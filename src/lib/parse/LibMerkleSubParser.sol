@@ -14,7 +14,7 @@ library LibMerkleSubParser {
 
         meta[SUB_PARSER_WORD_MERKLE_PROOF_VERIFY] = AuthoringMetaV2(
             "merkle-proof-verify",
-            "Verifies a Merkle proof according to Open Zeppelin 5.x logic. Returns true if the proof is valid (caller must ensure). First value is the merkle root. Second is the leaf. Tail are the proof values."
+            "Verifies a Merkle proof according to Open Zeppelin 4.x logic. Returns true if the proof is valid (caller must ensure). First value is the merkle root. Second is the leaf. Tail are the proof values."
         );
         return abi.encode(meta);
     }
