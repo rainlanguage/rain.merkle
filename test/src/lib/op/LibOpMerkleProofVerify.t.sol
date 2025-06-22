@@ -22,10 +22,7 @@ contract LibOpMerkleProofVerifyTest is Test {
         inputs[1] = LEAF0_0;
         inputs[2] = PROOF0_0;
 
-        uint256[] memory outputs = LibOpMerkleProofVerify.run(
-            operand,
-            inputs
-        );
+        uint256[] memory outputs = LibOpMerkleProofVerify.run(operand, inputs);
 
         assertEq(outputs.length, 1);
         assertEq(outputs[0], 1, "Merkle proof should be valid");
@@ -39,5 +36,4 @@ contract LibOpMerkleProofVerifyTest is Test {
         assertEq(outputs.length, 1);
         assertEq(outputs[0], 0, "Merkle proof should be invalid");
     }
-
 }

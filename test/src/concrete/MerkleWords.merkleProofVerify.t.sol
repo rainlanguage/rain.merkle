@@ -81,5 +81,4 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
             "merkle-proof-verify(root leaf proof)"
         );
     }
-
 }
