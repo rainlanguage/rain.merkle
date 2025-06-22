@@ -49,4 +49,37 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
             "merkle-proof-verify(root leaf proof)"
         );
     }
+
+    function testMerkleWordsMerkleProofVerifyUnhappy(uint256 proof, uint256 leaf, uint256 root) external {
+        MerkleWords merkleWords = new MerkleWords();
+
+        uint256[] memory expectedStack = new uint256[](4);
+        expectedStack[0] = 0;
+        expectedStack[1] = proof;
+        expectedStack[2] = leaf;
+        expectedStack[3] = root;
+
+        checkHappy(
+            bytes(
+                string.concat(
+                    "using-words-from ",
+                    address(merkleWords).toHexString(),
+                    "\n",
+                    "root: ",
+                    root.toHexString(),
+                    ",",
+                    "leaf: ",
+                    leaf.toHexString(),
+                    ",",
+                    "proof: ",
+                    proof.toHexString(),
+                    ",",
+                    " _: merkle-proof-verify(root leaf proof);"
+                )
+            ),
+            expectedStack,
+            "merkle-proof-verify(root leaf proof)"
+        );
+    }
+
 }
