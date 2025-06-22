@@ -1,1 +1,6 @@
+LibOpMerkleProofVerifyTest:testIntegrity(uint256,uint256,uint256) (runs: 257, μ: 3638, ~: 3638)
+LibOpMerkleProofVerifyTest:testRunHappy() (gas: 208)
 MerkleWordsMerkleProofVerifyTest:testMerkleWordsMerkleProofVerifyHappy() (gas: 1337433)
+TestProofTest:testDerivedConstants() (gas: 6485)
+TestProofTest:testLeafConstants() (gas: 19635)
+TestProofTest:testTreeConstants() (gas: 13928)

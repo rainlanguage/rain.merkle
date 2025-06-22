@@ -23,11 +23,13 @@ contract TestProofTest is Test {
             uint256(keccak256(bytes.concat(keccak256(abi.encode(LEAF0_0_VALUE, LEAF0_0_AMOUNT)))));
 
         assertEq(LEAF0_0, leaf0_0Calculated, "LEAF0_0 should match the calculated value");
+        assertEq(PROOF0_0, LEAF1_0, "PROOF0_0 should match LEAF1_0");
 
         uint256 leaf1_0Calculated =
             uint256(keccak256(bytes.concat(keccak256(abi.encode(LEAF1_0_VALUE, LEAF1_0_AMOUNT)))));
 
         assertEq(LEAF1_0, leaf1_0Calculated, "LEAF1_0 should match the calculated value");
+        assertEq(PROOF1_0, LEAF0_0, "PROOF1_0 should match LEAF0_0");
     }
 
     function testTreeConstants() external view {
