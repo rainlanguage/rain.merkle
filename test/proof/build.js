@@ -13,5 +13,7 @@ const tree = StandardMerkleTree.of(values, ["address", "uint256"]);
 // (3)
 console.log('Merkle Root:', tree.root);
 
+console.log(tree.dump());
+
 // (4)
 fs.writeFileSync("test/proof/tree.json", JSON.stringify(tree.dump()));

@@ -8,13 +8,13 @@ import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/M
 
 contract LibOpMerkleProofVerifyTest is Test {
     function testIntegrity(Operand operand, uint256 inputs, uint256 outputs) external pure {
-        (uint256 calculatedInputs, uint256 calculatedOutputs) = LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
+        (uint256 calculatedInputs, uint256 calculatedOutputs) =
+            LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
         assertEq(calculatedInputs, inputs);
         assertEq(calculatedOutputs, 1);
     }
 
-    function testRunHappy() external{
-    }
+    function testRunHappy() external {}
 
     // function testRun() external {
     //     uint256[] memory inputs = new uint256[](4);
