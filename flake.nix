@@ -19,6 +19,8 @@
             body = ''
               set -euxo pipefail
 
+              node test/proof/build.js;
+
               mkdir -p meta;
               forge script --silent ./script/BuildAuthoringMeta.sol;
               rain meta build \
