@@ -8,10 +8,19 @@ import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/M
 import {ROOT, LEAF0_0, PROOF0_0} from "test/proof/LibTestProof.sol";
 
 contract LibOpMerkleProofVerifyTest is Test {
-    function testIntegrity(Operand operand, uint256 inputs, uint256 outputs) external pure {
+    function testIntegrityEnoughInputs(Operand operand, uint256 inputs, uint256 outputs) external pure {
+        inputs = bound(inputs, 3, type(uint256).max);
         (uint256 calculatedInputs, uint256 calculatedOutputs) =
             LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
         assertEq(calculatedInputs, inputs);
+        assertEq(calculatedOutputs, 1);
+    }
+
+    function testIntegrityNotEnoughInputs(Operand operand, uint256 inputs, uint256 outputs) external pure {
+        inputs = bound(inputs, 0, 2);
+        (uint256 calculatedInputs, uint256 calculatedOutputs) =
+            LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
+        assertEq(calculatedInputs, 3);
         assertEq(calculatedOutputs, 1);
     }
 

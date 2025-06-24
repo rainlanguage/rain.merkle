@@ -81,4 +81,64 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
             "merkle-proof-verify(root leaf proof)"
         );
     }
+
+    function testMerkleWordsMerkleProofVerifyNoInputs() external {
+        MerkleWords merkleWords = new MerkleWords();
+
+        checkBadInputs(
+            bytes(
+                string.concat(
+                    "using-words-from ", address(merkleWords).toHexString(), "\n", " _: merkle-proof-verify();"
+                )
+            ),
+            0,
+            3,
+            0
+        );
+    }
+
+    function testMerkleWordsMerkleProofVerifyOnlyRoot(uint256 root) external {
+        MerkleWords merkleWords = new MerkleWords();
+
+        checkBadInputs(
+            bytes(
+                string.concat(
+                    "using-words-from ",
+                    address(merkleWords).toHexString(),
+                    "\n",
+                    "root: ",
+                    root.toHexString(),
+                    ",",
+                    " _: merkle-proof-verify(root);"
+                )
+            ),
+            2,
+            3,
+            1
+        );
+    }
+
+    function testMerkleWordsMerkleProofVerifyOnlyRootAndLeaf(uint256 root, uint256 leaf) external {
+        MerkleWords merkleWords = new MerkleWords();
+
+        checkBadInputs(
+            bytes(
+                string.concat(
+                    "using-words-from ",
+                    address(merkleWords).toHexString(),
+                    "\n",
+                    "root: ",
+                    root.toHexString(),
+                    ",",
+                    "leaf: ",
+                    leaf.toHexString(),
+                    ",",
+                    " _: merkle-proof-verify(root leaf);"
+                )
+            ),
+            4,
+            3,
+            2
+        );
+    }
 }
