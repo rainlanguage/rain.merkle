@@ -8,7 +8,8 @@ import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/M
 library LibOpMerkleProofVerify {
     function integrity(Operand, uint256 inputs, uint256) internal pure returns (uint256, uint256) {
         // Merkle proof requires dynamic proof inputs and produces 1 output.
-        return (inputs, 1);
+        // Inputs must be at least 3: the root, the leaf, and at least one proof.
+        return (inputs < 3 ? 3 : inputs, 1);
     }
 
     function run(Operand, uint256[] memory inputs) internal pure returns (uint256[] memory) {
