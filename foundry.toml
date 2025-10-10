@@ -6,7 +6,8 @@ remappings = [
     "openzeppelin-contracts/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/openzeppelin-contracts/",
     "rain.metadata/=lib/rain.interpreter/lib/rain.metadata/src/",
     "rain.interpreter/=lib/rain.interpreter/src/",
-    "rain.sol.codegen/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.sol.codegen/src/"
+    "rain.sol.codegen/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.sol.codegen/src/",
+    "rain.math.float/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.math.float/src/",
 ]
 
 fs_permissions = [
@@ -18,7 +19,7 @@ fs_permissions = [
 evm_version = "paris"
 
 optimizer = true
-optimizer_runs = 1000000
+optimizer_runs = 1000
 
 bytecode_hash = "none"
 cbor_metadata = false

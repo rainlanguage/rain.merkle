@@ -3,7 +3,7 @@
 pragma solidity =0.8.25;
 
 import {MerkleWords} from "src/concrete/MerkleWords.sol";
-import {OpTest} from "rain.interpreter/../test/abstract/OpTest.sol";
+import {OpTest, StackItem} from "rain.interpreter/../test/abstract/OpTest.sol";
 import {Strings} from "openzeppelin-contracts/contracts/utils/Strings.sol";
 
 contract MerkleWordsMerkleProofVerifyTest is OpTest {
@@ -13,19 +13,17 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
     function testMerkleWordsMerkleProofVerifyHappy() external {
         MerkleWords merkleWords = new MerkleWords();
 
-        uint256 root = 0xd4dee0beab2d53f2cc83e567171bd2820e49898130a22622b10ead383e90bd77;
-        uint256 proof = 0xb92c48e9d7abe27fd8dfd6b5dfdbfb1c9a463f80c712b66f3a5180a090cccafc;
-        uint256 leaf = uint256(
-            keccak256(
-                bytes.concat(keccak256(abi.encode(0x1111111111111111111111111111111111111111, 5000000000000000000)))
-            )
+        bytes32 root = 0xd4dee0beab2d53f2cc83e567171bd2820e49898130a22622b10ead383e90bd77;
+        bytes32 proof = 0xb92c48e9d7abe27fd8dfd6b5dfdbfb1c9a463f80c712b66f3a5180a090cccafc;
+        bytes32 leaf = keccak256(
+            bytes.concat(keccak256(abi.encode(0x1111111111111111111111111111111111111111, 5000000000000000000)))
         );
 
-        uint256[] memory expectedStack = new uint256[](4);
-        expectedStack[0] = 1;
-        expectedStack[1] = proof;
-        expectedStack[2] = leaf;
-        expectedStack[3] = root;
+        StackItem[] memory expectedStack = new StackItem[](4);
+        expectedStack[0] = StackItem.wrap(bytes32(uint256(1)));
+        expectedStack[1] = StackItem.wrap(proof);
+        expectedStack[2] = StackItem.wrap(leaf);
+        expectedStack[3] = StackItem.wrap(root);
 
         checkHappy(
             bytes(
@@ -34,13 +32,13 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
                     address(merkleWords).toHexString(),
                     "\n",
                     "root: ",
-                    root.toHexString(),
+                    uint256(root).toHexString(),
                     ",",
                     "leaf: ",
-                    leaf.toHexString(),
+                    uint256(leaf).toHexString(),
                     ",",
                     "proof: ",
-                    proof.toHexString(),
+                    uint256(proof).toHexString(),
                     ",",
                     " _: merkle-proof-verify(root leaf proof);"
                 )
@@ -50,14 +48,14 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
         );
     }
 
-    function testMerkleWordsMerkleProofVerifyUnhappy(uint256 proof, uint256 leaf, uint256 root) external {
+    function testMerkleWordsMerkleProofVerifyUnhappy(bytes32 proof, bytes32 leaf, bytes32 root) external {
         MerkleWords merkleWords = new MerkleWords();
 
-        uint256[] memory expectedStack = new uint256[](4);
-        expectedStack[0] = 0;
-        expectedStack[1] = proof;
-        expectedStack[2] = leaf;
-        expectedStack[3] = root;
+        StackItem[] memory expectedStack = new StackItem[](4);
+        expectedStack[0] = StackItem.wrap(0);
+        expectedStack[1] = StackItem.wrap(proof);
+        expectedStack[2] = StackItem.wrap(leaf);
+        expectedStack[3] = StackItem.wrap(root);
 
         checkHappy(
             bytes(
@@ -66,13 +64,13 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
                     address(merkleWords).toHexString(),
                     "\n",
                     "root: ",
-                    root.toHexString(),
+                    uint256(root).toHexString(),
                     ",",
                     "leaf: ",
-                    leaf.toHexString(),
+                    uint256(leaf).toHexString(),
                     ",",
                     "proof: ",
-                    proof.toHexString(),
+                    uint256(proof).toHexString(),
                     ",",
                     " _: merkle-proof-verify(root leaf proof);"
                 )
