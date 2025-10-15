@@ -3,12 +3,11 @@
 pragma solidity =0.8.25;
 
 import {Test} from "forge-std/Test.sol";
-import {LibOpMerkleProofVerify, Operand} from "src/lib/op/LibOpMerkleProofVerify.sol";
-import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
+import {LibOpMerkleProofVerify, OperandV2, StackItem} from "src/lib/op/LibOpMerkleProofVerify.sol";
 import {ROOT, LEAF0_0, PROOF0_0} from "test/proof/LibTestProof.sol";
 
 contract LibOpMerkleProofVerifyTest is Test {
-    function testIntegrityEnoughInputs(Operand operand, uint256 inputs, uint256 outputs) external pure {
+    function testIntegrityEnoughInputs(OperandV2 operand, uint256 inputs, uint256 outputs) external pure {
         inputs = bound(inputs, 3, type(uint256).max);
         (uint256 calculatedInputs, uint256 calculatedOutputs) =
             LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
@@ -16,7 +15,7 @@ contract LibOpMerkleProofVerifyTest is Test {
         assertEq(calculatedOutputs, 1);
     }
 
-    function testIntegrityNotEnoughInputs(Operand operand, uint256 inputs, uint256 outputs) external pure {
+    function testIntegrityNotEnoughInputs(OperandV2 operand, uint256 inputs, uint256 outputs) external pure {
         inputs = bound(inputs, 0, 2);
         (uint256 calculatedInputs, uint256 calculatedOutputs) =
             LibOpMerkleProofVerify.integrity(operand, inputs, outputs);
@@ -24,25 +23,25 @@ contract LibOpMerkleProofVerifyTest is Test {
         assertEq(calculatedOutputs, 1);
     }
 
-    function testRunHappy(Operand operand) external pure {
-        uint256[] memory inputs = new uint256[](3);
+    function testRunHappy(OperandV2 operand) external pure {
+        StackItem[] memory inputs = new StackItem[](3);
 
-        inputs[0] = ROOT;
-        inputs[1] = LEAF0_0;
-        inputs[2] = PROOF0_0;
+        inputs[0] = StackItem.wrap(ROOT);
+        inputs[1] = StackItem.wrap(LEAF0_0);
+        inputs[2] = StackItem.wrap(PROOF0_0);
 
-        uint256[] memory outputs = LibOpMerkleProofVerify.run(operand, inputs);
+        StackItem[] memory outputs = LibOpMerkleProofVerify.run(operand, inputs);
 
         assertEq(outputs.length, 1);
-        assertEq(outputs[0], 1, "Merkle proof should be valid");
+        assertEq(StackItem.unwrap(outputs[0]), bytes32(uint256(1)), "Merkle proof should be valid");
     }
 
-    function testRunUnhappy(Operand operand, uint256[] memory inputs) external pure {
+    function testRunUnhappy(OperandV2 operand, StackItem[] memory inputs) external pure {
         vm.assume(inputs.length > 2);
 
-        uint256[] memory outputs = LibOpMerkleProofVerify.run(operand, inputs);
+        StackItem[] memory outputs = LibOpMerkleProofVerify.run(operand, inputs);
 
         assertEq(outputs.length, 1);
-        assertEq(outputs[0], 0, "Merkle proof should be invalid");
+        assertEq(StackItem.unwrap(outputs[0]), 0, "Merkle proof should be invalid");
     }
 }

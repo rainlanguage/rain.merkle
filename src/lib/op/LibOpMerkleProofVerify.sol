@@ -2,17 +2,17 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {Operand} from "rain.interpreter.interface/interface/deprecated/IInterpreterV2.sol";
+import {OperandV2, StackItem} from "rain.interpreter.interface/interface/unstable/IInterpreterV4.sol";
 import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
 
 library LibOpMerkleProofVerify {
-    function integrity(Operand, uint256 inputs, uint256) internal pure returns (uint256, uint256) {
+    function integrity(OperandV2, uint256 inputs, uint256) internal pure returns (uint256, uint256) {
         // Merkle proof requires dynamic proof inputs and produces 1 output.
         // Inputs must be at least 3: the root, the leaf, and at least one proof.
         return (inputs < 3 ? 3 : inputs, 1);
     }
 
-    function run(Operand, uint256[] memory inputs) internal pure returns (uint256[] memory) {
+    function run(OperandV2, StackItem[] memory inputs) internal pure returns (StackItem[] memory) {
         bytes32 root;
         bytes32 leaf;
         bytes32[] memory proof;
