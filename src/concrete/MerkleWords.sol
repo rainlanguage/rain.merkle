@@ -7,6 +7,9 @@ import {MerkleSubParser, BaseRainterpreterSubParserNPE2} from "../abstract/Merkl
 import {DESCRIBED_BY_META_HASH} from "../generated/MerkleWords.pointers.sol";
 import {IDescribedByMetaV1} from "rain.metadata/interface/IDescribedByMetaV1.sol";
 
+/// @title MerkleWords
+/// Minimal boilerplate to build a deployable concrete contract out of the extern
+/// and subparser abstract contracts.
 contract MerkleWords is MerkleExtern, MerkleSubParser {
     /// @inheritdoc IDescribedByMetaV1
     function describedByMetaV1() external pure returns (bytes32) {

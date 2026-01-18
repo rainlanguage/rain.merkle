@@ -3,7 +3,12 @@
 pragma solidity ^0.8.25;
 
 import {OPCODE_MERKLE_PROOF_VERIFY} from "./MerkleExtern.sol";
-import {OperandV2, BaseRainterpreterSubParserNPE2} from "rain.interpreter/abstract/BaseRainterpreterSubParserNPE2.sol";
+import {
+    OperandV2,
+    BaseRainterpreterSubParserNPE2,
+    IParserToolingV1,
+    ISubParserToolingV1
+} from "rain.interpreter/abstract/BaseRainterpreterSubParserNPE2.sol";
 import {LibSubParse} from "rain.interpreter/lib/parse/LibSubParse.sol";
 import {LibConvert} from "rain.lib.typecast/LibConvert.sol";
 import {
@@ -19,12 +24,10 @@ import {
 
 uint8 constant PARSE_META_BUILD_DEPTH = 1;
 
+/// @title MerkleSubParser
+/// Boilerplate implementation of a sub-parser exposing the merkle proof logic
+/// from the MerkleExtern as a rainlang word.
 abstract contract MerkleSubParser is BaseRainterpreterSubParserNPE2 {
-    // slither-disable-next-line dead-code
-    function extern() internal view virtual returns (address) {
-        return address(this);
-    }
-
     /// @inheritdoc BaseRainterpreterSubParserNPE2
     function subParserParseMeta() internal pure override returns (bytes memory) {
         return SUB_PARSER_PARSE_META;
@@ -40,6 +43,7 @@ abstract contract MerkleSubParser is BaseRainterpreterSubParserNPE2 {
         return SUB_PARSER_OPERAND_HANDLERS;
     }
 
+    /// @inheritdoc IParserToolingV1
     function buildOperandHandlerFunctionPointers() external pure returns (bytes memory) {
         function(bytes32[] memory) internal pure returns (OperandV2)[] memory fs = new function(bytes32[] memory)
                 internal
@@ -54,10 +58,12 @@ abstract contract MerkleSubParser is BaseRainterpreterSubParserNPE2 {
         return LibConvert.unsafeTo16BitBytes(pointers);
     }
 
+    /// @inheritdoc IParserToolingV1
     function buildLiteralParserFunctionPointers() external pure returns (bytes memory) {
         return "";
     }
 
+    /// @inheritdoc ISubParserToolingV1
     function buildSubParserWordParsers() external pure returns (bytes memory) {
         function(uint256, uint256, OperandV2)
             internal
@@ -85,5 +91,10 @@ abstract contract MerkleSubParser is BaseRainterpreterSubParserNPE2 {
         return LibSubParse.subParserExtern(
             IInterpreterExternV4(extern()), constantsHeight, ioByte, operand, OPCODE_MERKLE_PROOF_VERIFY
         );
+    }
+
+    // slither-disable-next-line dead-code
+    function extern() internal view virtual returns (address) {
+        return address(this);
     }
 }
