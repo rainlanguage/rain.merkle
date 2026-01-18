@@ -5,7 +5,9 @@ pragma solidity ^0.8.25;
 import {
     BaseRainterpreterExternNPE2,
     OperandV2,
-    StackItem
+    StackItem,
+    IOpcodeToolingV1,
+    IIntegrityToolingV1
 } from "rain.interpreter/abstract/BaseRainterpreterExternNPE2.sol";
 import {LibOpMerkleProofVerify} from "../lib/op/LibOpMerkleProofVerify.sol";
 import {LibConvert} from "rain.lib.typecast/LibConvert.sol";
@@ -13,18 +15,23 @@ import {LibConvert} from "rain.lib.typecast/LibConvert.sol";
 import {OPCODE_FUNCTION_POINTERS, INTEGRITY_FUNCTION_POINTERS} from "../generated/MerkleWords.pointers.sol";
 
 uint256 constant OPCODE_MERKLE_PROOF_VERIFY = 0;
-
 uint256 constant OPCODE_FUNCTION_POINTERS_LENGTH = 1;
 
+/// @title MerkleExtern
+/// Boilerplate implementation to expose merkle proof verification opcode lib
+/// for Open Zeppelin 5.x logic as an abstract rain interpreter extern contract.
 abstract contract MerkleExtern is BaseRainterpreterExternNPE2 {
+    /// @inheritdoc BaseRainterpreterExternNPE2
     function opcodeFunctionPointers() internal pure override returns (bytes memory) {
         return OPCODE_FUNCTION_POINTERS;
     }
 
+    /// @inheritdoc BaseRainterpreterExternNPE2
     function integrityFunctionPointers() internal pure override returns (bytes memory) {
         return INTEGRITY_FUNCTION_POINTERS;
     }
 
+    /// @inheritdoc IOpcodeToolingV1
     function buildOpcodeFunctionPointers() external pure returns (bytes memory) {
         function(OperandV2, StackItem[] memory)
             internal
@@ -42,6 +49,7 @@ abstract contract MerkleExtern is BaseRainterpreterExternNPE2 {
         return LibConvert.unsafeTo16BitBytes(pointers);
     }
 
+    /// @inheritdoc IIntegrityToolingV1
     function buildIntegrityFunctionPointers() external pure returns (bytes memory) {
         function(OperandV2, uint256, uint256)
             internal

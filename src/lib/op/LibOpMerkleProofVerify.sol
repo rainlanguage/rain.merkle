@@ -5,6 +5,9 @@ pragma solidity ^0.8.25;
 import {OperandV2, StackItem} from "rain.interpreter.interface/interface/unstable/IInterpreterV4.sol";
 import {MerkleProof} from "openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol";
 
+/// @title LibOpMerkleProofVerify
+/// Provides implementation and boilerplate to expose merkle proof verification
+/// from Open Zeppelin 5.x as a rain interpreter extern.
 library LibOpMerkleProofVerify {
     function integrity(OperandV2, uint256 inputs, uint256) internal pure returns (uint256, uint256) {
         // Merkle proof requires dynamic proof inputs and produces 1 output.
@@ -12,6 +15,11 @@ library LibOpMerkleProofVerify {
         return (inputs < 3 ? 3 : inputs, 1);
     }
 
+    /// Verifies a Merkle proof.
+    /// The first two elements of the input array are the root and the leaf.
+    /// The rest of the elements are the Merkle proof. The length of the proof is
+    /// implied by the structure of the rainlang, but must be at least 1.
+    /// Returns a single value; 1 if the proof is valid, 0 otherwise.
     function run(OperandV2, StackItem[] memory inputs) internal pure returns (StackItem[] memory) {
         bytes32 root;
         bytes32 leaf;
