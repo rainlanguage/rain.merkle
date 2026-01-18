@@ -3,7 +3,7 @@
 Exposes the merkle proof logic from Open Zeppelin 5.x to rainlang as a single
 subparsed word `merkle-proof-verify`.
 
-The usage is as per the (https://docs.openzeppelin.com/contracts/5.x/api/utils/cryptography#MerkleProof-verify-bytes32---bytes32-bytes32-)[Open Zeppelin documentation], where the first argument to
+The usage is as per the [Open Zeppelin documentation](https://docs.openzeppelin.com/contracts/5.x/api/utils/cryptography#MerkleProof-verify-bytes32---bytes32-bytes32-), where the first argument to
 `merkle-proof-verify` is the root, the second is the leaf and the tail is the
 proof.
 
