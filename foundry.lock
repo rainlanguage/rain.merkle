@@ -1,7 +1,4 @@
 {
-  "lib/forge-std": {
-    "rev": "77041d2ce690e692d6e03cc812b57d1ddaa4d505"
-  },
   "lib/rain.interpreter": {
     "rev": "7bf57b61331ff3000fde74c0437ce6489f0e1667"
   }
