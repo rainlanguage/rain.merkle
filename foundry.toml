@@ -1,6 +1,7 @@
 [profile.default]
 
 solc = "0.8.25"
+evm_version = "cancun"
 
 remappings = [
     "openzeppelin-contracts/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/openzeppelin-contracts/",
@@ -16,10 +17,9 @@ fs_permissions = [
     { access = "read", path = "test/proof/tree.json" },
 ]
 
-evm_version = "paris"
-
 optimizer = true
 optimizer_runs = 1000
 
 bytecode_hash = "none"
 cbor_metadata = false
+libs = ["node_modules", "lib"]
