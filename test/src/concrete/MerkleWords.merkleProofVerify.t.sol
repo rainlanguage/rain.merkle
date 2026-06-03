@@ -3,8 +3,9 @@
 pragma solidity =0.8.25;
 
 import {MerkleWords} from "src/concrete/MerkleWords.sol";
-import {OpTest, StackItem} from "rain.interpreter/../test/abstract/OpTest.sol";
-import {Strings} from "openzeppelin-contracts/contracts/utils/Strings.sol";
+import {OpTest, StackItem} from "rainlang-0.1.2/test/abstract/OpTest.sol";
+import {ExternIntegrityInputsMismatch} from "rainlang-0.1.2/src/error/ErrExtern.sol";
+import {Strings} from "@openzeppelin-contracts-5.6.1/utils/Strings.sol";
 
 contract MerkleWordsMerkleProofVerifyTest is OpTest {
     using Strings for address;
@@ -83,22 +84,20 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
     function testMerkleWordsMerkleProofVerifyNoInputs() external {
         MerkleWords merkleWords = new MerkleWords();
 
-        checkBadInputs(
+        checkUnhappyParse2(
             bytes(
                 string.concat(
                     "using-words-from ", address(merkleWords).toHexString(), "\n", " _: merkle-proof-verify();"
                 )
             ),
-            0,
-            3,
-            0
+            abi.encodeWithSelector(ExternIntegrityInputsMismatch.selector, 0, 3)
         );
     }
 
     function testMerkleWordsMerkleProofVerifyOnlyRoot(uint256 root) external {
         MerkleWords merkleWords = new MerkleWords();
 
-        checkBadInputs(
+        checkUnhappyParse2(
             bytes(
                 string.concat(
                     "using-words-from ",
@@ -110,16 +109,14 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
                     " _: merkle-proof-verify(root);"
                 )
             ),
-            2,
-            3,
-            1
+            abi.encodeWithSelector(ExternIntegrityInputsMismatch.selector, 1, 3)
         );
     }
 
     function testMerkleWordsMerkleProofVerifyOnlyRootAndLeaf(uint256 root, uint256 leaf) external {
         MerkleWords merkleWords = new MerkleWords();
 
-        checkBadInputs(
+        checkUnhappyParse2(
             bytes(
                 string.concat(
                     "using-words-from ",
@@ -134,9 +131,7 @@ contract MerkleWordsMerkleProofVerifyTest is OpTest {
                     " _: merkle-proof-verify(root leaf);"
                 )
             ),
-            4,
-            3,
-            2
+            abi.encodeWithSelector(ExternIntegrityInputsMismatch.selector, 2, 3)
         );
     }
 }
