@@ -14,6 +14,8 @@ path = [
     "foundry.toml",
     "slither.config.json",
     "REUSE.toml",
+    "remappings.txt",
+    "soldeer.lock",
     "package-lock.json",
     "package.json",
     "test/proof/**/",

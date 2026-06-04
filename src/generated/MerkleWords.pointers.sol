@@ -10,7 +10,7 @@ pragma solidity ^0.8.25;
 // file needs the contract to exist so that it can be compiled.
 
 /// @dev Hash of the known bytecode.
-bytes32 constant BYTECODE_HASH = bytes32(0xcca6d589b97ad06d0c4fd8a70d87b3bfee343d925c7eff89e51caebccf5580be);
+bytes32 constant BYTECODE_HASH = bytes32(0xde404f6c088cc028a120f943a4e2c603aa21fef6695cc560a7aa71040087b20a);
 
 /// @dev The hash of the meta that describes the contract.
 bytes32 constant DESCRIBED_BY_META_HASH = bytes32(0xe45a2c109b59e347921d9fcc1b40c6568f987b98efafa5605feda643872eb90d);
@@ -42,18 +42,18 @@ uint8 constant PARSE_META_BUILD_DEPTH = 1;
 /// bytecode that dials back into this contract at eval time, and mapping
 /// to things that happen entirely on the interpreter such as well known
 /// constants and references to the context grid.
-bytes constant SUB_PARSER_WORD_PARSERS = hex"06dc";
+bytes constant SUB_PARSER_WORD_PARSERS = hex"0771";
 
 /// @dev Every two bytes is a function pointer for an operand handler.
 /// These positional indexes all map to the same indexes looked up in the parse
 /// meta.
-bytes constant OPERAND_HANDLER_FUNCTION_POINTERS = hex"0aa5";
+bytes constant OPERAND_HANDLER_FUNCTION_POINTERS = hex"0b4f";
 
 /// @dev The function pointers for the integrity check fns.
-bytes constant INTEGRITY_FUNCTION_POINTERS = hex"0a86";
+bytes constant INTEGRITY_FUNCTION_POINTERS = hex"0b30";
 
 /// @dev The function pointers known to the interpreter for dynamic dispatch.
 /// By setting these as a constant they can be inlined into the interpreter
 /// and loaded at eval time for very low gas (~100) due to the compiler
 /// optimising it to a single `codecopy` to build the in memory bytes array.
-bytes constant OPCODE_FUNCTION_POINTERS = hex"078c";
+bytes constant OPCODE_FUNCTION_POINTERS = hex"0821";
