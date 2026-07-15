@@ -10,7 +10,7 @@ import {LibGenParseMeta} from "rain-interpreter-interface-0.1.0/src/lib/codegen/
 import {LibMerkleSubParser} from "src/lib/parse/LibMerkleSubParser.sol";
 import {PARSE_META_BUILD_DEPTH} from "src/abstract/MerkleSubParser.sol";
 
-contract BuildPointers is Script {
+contract Build is Script {
     function buildMerkleWordsPointers() internal {
         MerkleWords merkleWords = new MerkleWords();
 
