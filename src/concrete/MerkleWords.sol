@@ -4,7 +4,7 @@ pragma solidity =0.8.25;
 
 import {MerkleExtern, BaseRainlangExtern} from "../abstract/MerkleExtern.sol";
 import {MerkleSubParser, BaseRainlangSubParser} from "../abstract/MerkleSubParser.sol";
-import {DESCRIBED_BY_META_HASH} from "../generated/MerkleWords.pointers.sol";
+import {DESCRIBED_BY_META_HASH} from "../generated/MerkleWordsPointers.sol";
 import {IDescribedByMetaV1} from "rain-metadata-0.1.0/src/interface/IDescribedByMetaV1.sol";
 
 /// @title MerkleWords
