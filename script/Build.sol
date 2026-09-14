@@ -4,9 +4,9 @@ pragma solidity =0.8.25;
 
 import {Script} from "forge-std-1.16.2/src/Script.sol";
 import {MerkleWords} from "src/concrete/MerkleWords.sol";
-import {LibFs} from "rain-sol-codegen-0.1.36/src/lib/LibFs.sol";
-import {LibCodeGen} from "rain-sol-codegen-0.1.36/src/lib/LibCodeGen.sol";
-import {LibGenParseMeta} from "rainlang-interface-0.2.8/src/lib/codegen/LibGenParseMeta.sol";
+import {LibFs} from "rain-sol-codegen-0.1.37/src/lib/LibFs.sol";
+import {LibCodeGen} from "rain-sol-codegen-0.1.37/src/lib/LibCodeGen.sol";
+import {LibGenParseMeta} from "rainlang-interface-0.2.9/src/lib/codegen/LibGenParseMeta.sol";
 import {LibMerkleSubParser} from "src/lib/parse/LibMerkleSubParser.sol";
 import {PARSE_META_BUILD_DEPTH} from "src/abstract/MerkleSubParser.sol";
 
