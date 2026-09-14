@@ -8,9 +8,9 @@ import {
     StackItem,
     IOpcodeToolingV1,
     IIntegrityToolingV1
-} from "rainlang-0.2.1/src/abstract/BaseRainlangExtern.sol";
+} from "rainlang-0.2.6/src/abstract/BaseRainlangExtern.sol";
 import {LibOpMerkleProofVerify} from "../lib/op/LibOpMerkleProofVerify.sol";
-import {LibConvert} from "rain-lib-typecast-0.1.0/src/LibConvert.sol";
+import {LibConvert} from "rain-lib-typecast-0.1.4/src/LibConvert.sol";
 
 import {OPCODE_FUNCTION_POINTERS, INTEGRITY_FUNCTION_POINTERS} from "../generated/MerkleWordsPointers.sol";
 
