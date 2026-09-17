@@ -6,7 +6,6 @@ path = [
     ".github/workflows/**/",
     "meta/**/",
     ".gitignore",
-    ".gitmodules",
     "audit/**/",
     "README.md",
     "flake.lock",
@@ -19,7 +18,6 @@ path = [
     "package-lock.json",
     "package.json",
     "test/proof/**/",
-    "foundry.lock",
 ]
 SPDX-FileCopyrightText = "Copyright (c) 2020 Rain Open Source Software Ltd"
 SPDX-License-Identifier = "LicenseRef-DCL-1.0"
