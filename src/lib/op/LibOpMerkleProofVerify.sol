@@ -2,8 +2,8 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {OperandV2, StackItem} from "rainlang-interface-0.2.9/src/interface/IInterpreterV4.sol";
-import {MerkleProof} from "@openzeppelin-contracts-5.6.1/utils/cryptography/MerkleProof.sol";
+import {OperandV2, StackItem} from "rainlang-interface-0.2.13/src/interface/IInterpreterV4.sol";
+import {MerkleProof} from "@openzeppelin-contracts-5.7.0/utils/cryptography/MerkleProof.sol";
 
 /// @title LibOpMerkleProofVerify
 /// Provides implementation and boilerplate to expose merkle proof verification
