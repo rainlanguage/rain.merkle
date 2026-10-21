@@ -16,6 +16,7 @@ path = [
   "REUSE.toml",
   "remappings.txt",
   "soldeer.lock",
+  ".soldeerignore",
   "package-lock.json",
   "package.json",
   "test/proof/**/",
