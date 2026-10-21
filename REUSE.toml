@@ -2,19 +2,20 @@ version = 1
 
 [[annotations]]
 path = [
+  ".claude/**/",
   ".gas-snapshot",
   ".github/workflows/**/",
   "meta/**/",
+  ".env.example",
   ".gitignore",
-  ".gitmodules",
   "audit/**/",
+  "CLAUDE.md",
   "README.md",
   "flake.lock",
   "flake.nix",
   "foundry.toml",
   "slither.config.json",
   "REUSE.toml",
-  "remappings.txt",
   "soldeer.lock",
   ".soldeerignore",
   "package-lock.json",
