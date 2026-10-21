@@ -13,34 +13,6 @@ checksum = "a77ad38d5fbef0ec10d1f4d191698e5fbaa2bffbee5d1aced91a39da5e9b908c"
 integrity = "fa706c8a7caf3426c90f75e6aafa3224b0a6c899b490800cf6944e4ec42f9344"
 
 [[dependencies]]
-name = "rain-deploy"
-version = "0.1.18"
-url = "https://soldeer-revisions.s3.amazonaws.com/rain-deploy/0_1_18_13-10-2026_22:18:03_rain.zip"
-checksum = "8da7a39284a83de22900959bcbba881307d60d9f15d6c587d970152c71e2fdef"
-integrity = "27b4b7adcea7ff8d1a09b93e3b8a00e8cffe1bc0cf4df4c22dab115f9552301f"
-
-[[dependencies]]
-name = "rain-extrospection"
-version = "0.1.14"
-url = "https://soldeer-revisions.s3.amazonaws.com/rain-extrospection/0_1_14_06-09-2026_09:00:43_rain.zip"
-checksum = "a9f34937f66c48c8cd15a700ccebc56c25b6a8af32f0b8757fcfa92be8bbfb56"
-integrity = "4fda4ce47b006de0619aba0591a00cece86454a5867643d99412bc57790cdce0"
-
-[[dependencies]]
-name = "rain-intorastring"
-version = "0.1.4"
-url = "https://soldeer-revisions.s3.amazonaws.com/rain-intorastring/0_1_4_06-09-2026_09:01:02_rain.zip"
-checksum = "653feaa47d7b05b10fad3daf7346a1d47b42755b310d2c0c5f8fa64da9e44a0c"
-integrity = "30ca2e895ebcb79303897b53010793d9357b2c98210aba40014db69a304b8231"
-
-[[dependencies]]
-name = "rain-lib-hash"
-version = "0.1.27"
-url = "https://soldeer-revisions.s3.amazonaws.com/rain-lib-hash/0_1_27_16-09-2026_11:52:52_rain.lib.zip"
-checksum = "7a25602d78180e82ac330d1f1b44609589e8efa42d7a3553f926445dbda64256"
-integrity = "ba9fc2ff053bf801fc1b05e5b192fe5b8ade545c408f33874f473bfc39d2d3f0"
-
-[[dependencies]]
 name = "rain-lib-memkv"
 version = "0.2.0"
 url = "https://soldeer-revisions.s3.amazonaws.com/rain-lib-memkv/0_2_0_18-09-2026_21:06:03_rain.lib.zip"
@@ -95,13 +67,6 @@ version = "0.3.9"
 url = "https://soldeer-revisions.s3.amazonaws.com/rain-string/0_3_9_25-08-2026_10:18:31_rain.zip"
 checksum = "fbeecc1f85d4449728c600abe78667db8367df5c391591195fe3bfc6bffd868e"
 integrity = "898116147f72443a8c34315abbeb9906d8a4665fdcbb39e6ad70ddd84354db53"
-
-[[dependencies]]
-name = "rain-tofu-erc20-decimals"
-version = "0.1.4"
-url = "https://soldeer-revisions.s3.amazonaws.com/rain-tofu-erc20-decimals/0_1_4_21-08-2026_19:26:07_rain.tofu.zip"
-checksum = "e4722c1b6e2f030263e27b20f9ab73a4f8111445945846b96f0085848288022b"
-integrity = "f10dc50978061fb2a92fb9ba907c2cbe678d24198faabf060f699d36f1e8e4a0"
 
 [[dependencies]]
 name = "rainlang"

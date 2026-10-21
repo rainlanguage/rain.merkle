@@ -16,3 +16,11 @@ Note that the `merkle-proof-verify` word returns `0` or `1` where `1` indicates
 that the proof is valid. The rainlang author is responsible for applying
 `ensure` to the return value to revert the transaction on invalid proofs if that
 is the desired behaviour.
+
+## Deployment
+
+This repo ships the abstracts, libraries and generated function pointers. The
+deployed `MerkleWords` concrete and its deploy record live in
+[`rain.merkle.deploy`](https://github.com/rainlanguage/rain.merkle.deploy).
+`test/concrete/MerkleWords.sol` is the instance `script/Build.sol` generates the
+pointers from; `rain.merkle.deploy` tests its own `MerkleWords` against them.

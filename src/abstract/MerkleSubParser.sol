@@ -25,6 +25,8 @@ uint8 constant PARSE_META_BUILD_DEPTH = 1;
 /// @title MerkleSubParser
 /// Boilerplate implementation of a sub-parser exposing the merkle proof logic
 /// from the MerkleExtern as a rainlang word.
+// The concrete implements describedByMetaV1.
+// slither-disable-next-line unimplemented-functions
 abstract contract MerkleSubParser is BaseRainlangSubParser {
     /// @inheritdoc BaseRainlangSubParser
     function subParserParseMeta() internal pure override returns (bytes memory) {
