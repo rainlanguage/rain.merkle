@@ -16,7 +16,7 @@ contract BuildHarness is Build {
         return snapshotContractNames();
     }
 
-    function externalCandidateSuites() external pure returns (DeployCandidate[] memory) {
+    function externalCandidateSuites() external view returns (DeployCandidate[] memory) {
         return checkedCandidateSuites();
     }
 }
