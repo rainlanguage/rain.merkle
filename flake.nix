@@ -21,8 +21,8 @@
       in
       rec {
         packages = {
-          rain-merkle-prelude = rainix.mkTask.${system} {
-            name = "rain-merkle-prelude";
+          rain-merkle-deploy-prelude = rainix.mkTask.${system} {
+            name = "rain-merkle-deploy-prelude";
             body = ''
               set -euxo pipefail
 
@@ -45,7 +45,7 @@
 
         devShells.default = pkgs.mkShell {
           packages = [
-            packages.rain-merkle-prelude
+            packages.rain-merkle-deploy-prelude
             rain.defaultPackage.${system}
           ];
 
