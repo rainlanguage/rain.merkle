@@ -11,9 +11,20 @@ library LibReleasedSuitesAggregate {
     function declaredContractNames(Vm vm, string memory source) internal pure returns (string[] memory) {
         string[] memory chunks = vm.split(source, "\nimport {Lib");
 
-        string[] memory names = new string[](chunks.length - 1);
+        uint256 count = 0;
         for (uint256 i = 1; i < chunks.length; i++) {
-            names[i - 1] = vm.split(chunks[i], "Released}")[0];
+            if (vm.split(chunks[i], "Released}").length > 1) {
+                count++;
+            }
+        }
+
+        string[] memory names = new string[](count);
+        uint256 j = 0;
+        for (uint256 i = 1; i < chunks.length; i++) {
+            string[] memory parts = vm.split(chunks[i], "Released}");
+            if (parts.length > 1) {
+                names[j++] = parts[0];
+            }
         }
         return names;
     }
